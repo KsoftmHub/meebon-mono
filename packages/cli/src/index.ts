@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { generateScaffold } from './commands/generateScaffold';
-import { integrateRepo } from './commands/integrateRepo'; // New import
+import { integrateRepo } from './commands/integrateRepo';
+import { removeScaffold } from './commands/removeScaffold'; // New import
 
 const program = new Command();
 
@@ -44,6 +45,26 @@ integrate
       process.exit(1);
     }
     await integrateRepo(repoUrl, name, type as 'app' | 'package');
+  });
+
+const removeCmd = program.command('remove')
+  .alias('rm')
+  .description('Remove an existing app or package');
+
+removeCmd
+  .command('app <appName>')
+  .alias('a')
+  .description('Remove an application from the apps/ directory')
+  .action(async (appName: string) => {
+    await removeScaffold(appName, 'app');
+  });
+
+removeCmd
+  .command('package <packageName>')
+  .alias('p')
+  .description('Remove a package from the packages/ directory')
+  .action(async (packageName: string) => {
+    await removeScaffold(packageName, 'package');
   });
 
 program.parse(process.argv);

@@ -1,8 +1,0 @@
-# Build output
-dist/
-
-# TypeScript build info
-*.tsbuildinfo
-
-# Local dependencies (already covered by root .gitignore, but good practice)
-node_modules/

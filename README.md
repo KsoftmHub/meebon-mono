@@ -168,20 +168,19 @@ All commands should be run from the root of the `monorepo-template` directory.
     ```
     After running, follow the instructions to run `pnpm install`.
 
-*   **Integrate an existing Git repository (Experimental):**
-    Clones an external Git repository and attempts to place it into your `apps/` or `packages/` directory.
-    Replace `<repo-url>` with the Git URL, `<name>` with the desired local directory name, and `<type>` with `app` or `package`.
+*   **Remove an existing application or package (Use with caution):**
+    Attempts to safely remove an application or package. It will try to handle Git submodules appropriately.
+    Replace `<name>` with the name of the app/package and `<type>` with `app` or `package`.
     ```bash
-    pnpm run cli -- integrate repo <repo-url> <name> <type>
-    # Example: pnpm run cli -- integrate repo https://github.com/user/example-lib.git example-lib package
+    pnpm run cli -- remove <type> <name>
+    # Example (app): pnpm run cli -- remove app old-service
+    # Example (package): pnpm run cli -- remove package old-utils
     ```
-    **Caveats for `integrate repo`:**
-    *   This command performs a shallow clone (`--depth 1`).
-    *   It will ask whether to remove the `.git` directory from the cloned repo. Removing it is generally better for monorepo integration; keeping it makes it a nested repository.
-    *   "Suitability" checks are basic (e.g., presence of `package.json`).
-    *   **Manual adjustments are almost always required** to the cloned repository's `package.json` (name, scripts, dependencies to use `workspace:` protocol if applicable) and `tsconfig.json` to align with the monorepo structure and build system.
-    *   This does **not** perform Git subtree merging or manage it as a Git submodule. It's a direct clone into the workspace.
-    *   Use with caution and ensure you understand the implications of adding external code.
+    **Important:**
+    *   Always commit or stash your changes before running this command.
+    *   This command will prompt for confirmation.
+    *   If removing a Git submodule, you will need to commit the changes to `.gitmodules`.
+    *   Verify with `git status` and test your project thoroughly after removal.
 
 ## 6. Managing Dependencies
 
