@@ -168,6 +168,21 @@ All commands should be run from the root of the `monorepo-template` directory.
     ```
     After running, follow the instructions to run `pnpm install`.
 
+*   **Integrate an existing Git repository (Experimental):**
+    Clones an external Git repository and attempts to place it into your `apps/` or `packages/` directory.
+    Replace `<repo-url>` with the Git URL, `<name>` with the desired local directory name, and `<type>` with `app` or `package`.
+    ```bash
+    pnpm run cli -- integrate repo <repo-url> <name> <type>
+    # Example: pnpm run cli -- integrate repo https://github.com/user/example-lib.git example-lib package
+    ```
+    **Caveats for `integrate repo`:**
+    *   This command performs a shallow clone (`--depth 1`).
+    *   It will ask whether to remove the `.git` directory from the cloned repo. Removing it is generally better for monorepo integration; keeping it makes it a nested repository.
+    *   "Suitability" checks are basic (e.g., presence of `package.json`).
+    *   **Manual adjustments are almost always required** to the cloned repository's `package.json` (name, scripts, dependencies to use `workspace:` protocol if applicable) and `tsconfig.json` to align with the monorepo structure and build system.
+    *   This does **not** perform Git subtree merging or manage it as a Git submodule. It's a direct clone into the workspace.
+    *   Use with caution and ensure you understand the implications of adding external code.
+
 ## 6. Managing Dependencies
 
 ---

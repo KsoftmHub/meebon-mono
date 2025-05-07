@@ -1,6 +1,9 @@
 {
   "references": [
     {
+      "path": "apps/api_template_test"
+    },
+    {
       "path": "apps/api-gateway"
     },
     {
