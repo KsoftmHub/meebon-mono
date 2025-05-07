@@ -1,0 +1,18 @@
+{
+  "name": "test-dot",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "echo 'Starting test-dot (dev mode)' && tsc --watch & node dist/index.js",
+    "lint": "echo 'Running lint for test-dot' && exit 0",
+    "test": "echo 'Running test for test-dot' && exit 0"
+  },
+  "dependencies": {
+    "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}

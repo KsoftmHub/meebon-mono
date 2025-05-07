@@ -1,0 +1,21 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "echo 'Starting api-gateway (dev mode)' && tsc --watch & node dist/index.js",
+    "lint": "echo 'Running lint for api-gateway' && exit 0",
+    "test": "echo 'Running test for api-gateway' && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}
