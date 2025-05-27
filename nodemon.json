@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "apps",
+    "packages",
+    "main.ts"
+  ],
+  "ext": "js,json,ts",
+  "ignore": [
+    "node_modules",
+    "dist"
+  ],
+  "exec": "pnpm build && pnpm start"
+}

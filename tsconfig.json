@@ -4,7 +4,11 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
+      "shared": [
+        "packages/shared/src"
+      ],
       "apps/*": [
         "apps/*"
       ],
@@ -28,9 +32,6 @@
       "path": "apps/api-gateway"
     },
     {
-      "path": "apps/express-app"
-    },
-    {
       "path": "apps/notification-service"
     },
     {
@@ -47,6 +48,8 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "packages/**/dist",
+    "apps/**/dist"
   ]
 }
