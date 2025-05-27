@@ -20,7 +20,7 @@
     "test": "turbo test",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "cli": "pnpm --filter cli build && node packages/cli/dist/index.js"
+    "cli": "ts-node --project tsconfig.json ./packages/cli/src/index.ts"
   },
   "devDependencies": {
     "@types/node": "latest",
