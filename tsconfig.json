@@ -1,7 +1,34 @@
 {
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "apps/*": [
+        "apps/*"
+      ],
+      "packages/*": [
+        "packages/*"
+      ]
+    },
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "composite": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
   "references": [
     {
       "path": "apps/api-gateway"
+    },
+    {
+      "path": "apps/express-app"
     },
     {
       "path": "apps/notification-service"
@@ -13,5 +40,13 @@
       "path": "packages/shared"
     }
   ],
-  "files": []
+  "include": [
+    "main.ts",
+    "apps/**/*",
+    "packages/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
